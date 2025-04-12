@@ -11,8 +11,9 @@ endif()
 
 project ("ManglerCpp")
 
-# Add source to this project's executable.
-add_executable (ManglerCpp "ManglerCpp.cpp" "ManglerCpp.h")
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS "*.cpp" "*.hpp" )
+
+add_library(ManglerCpp SHARED ${SOURCE_FILES})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ManglerCpp PROPERTY CXX_STANDARD 20)
